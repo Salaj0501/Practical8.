@@ -1,21 +1,13 @@
-name: Welcome New Contributors
+name: Welcome Workflow
 
-on:
-  pull_request_target:
-    types: [opened]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
-  greet:
+  welcome:
     runs-on: ubuntu-latest
     steps:
-    - name: Comment a welcome message
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: "👋 Welcome to Taskify! Thanks for contributing. We are excited to have you here! 🚀"
-          })
-
+      - name: Say Welcome
+        run: echo "🎉 Welcome to the repository!"
